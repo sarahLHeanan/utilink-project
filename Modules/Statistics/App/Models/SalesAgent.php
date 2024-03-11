@@ -14,17 +14,16 @@ class SalesAgent extends Model
      * The attributes that are mass assignable.
      */
     protected $fillable = [];
-    
-    // @todo calculate sales with this sales agent id and count
-    public function noSales()
+
+    public function sales()
     {
-        
+        return $this->hasMany('\Modules\Statistics\App\Models\Sales');
     }
 
     // @todo get all sales and sum total
     public function totalSales()
     {
-
+        return $this->sales->sum('price');
     }
 
 

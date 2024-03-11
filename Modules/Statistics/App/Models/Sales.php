@@ -19,4 +19,9 @@ class Sales extends Model
     {
         //return SalesFactory::new();
     }
+
+    public function salesAgent(): BelongsTo
+    {
+        return $this->belongsTo(SalesAgent::class);
+    }
 }

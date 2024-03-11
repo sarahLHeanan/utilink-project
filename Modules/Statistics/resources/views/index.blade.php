@@ -7,12 +7,14 @@
 
     <table>
         <tr>
+            <td>Agent:</td>
             <td>No sales:</td>
             <td>Total sales:</td>
         </tr>        
         <tr>
-            <td>{{ $noSales ?? 0 }}</td>
-            <td>{{ $totalSales ?? 0 }}</td>
+            <td>{{ $salesAgent->name ?? '' }}</td>
+            <td>{{ $noAgentSales ?? 0 }}</td>
+            <td>&pound;{{ $totalAgentSales ?? 0 }}</td>
         </tr>
     </table>
 @endsection
