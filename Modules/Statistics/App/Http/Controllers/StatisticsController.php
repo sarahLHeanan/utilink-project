@@ -8,6 +8,7 @@ use App\Models\Sales;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Cache;
 
 class StatisticsController extends Controller
 {
@@ -16,16 +17,12 @@ class StatisticsController extends Controller
      */
     public function index()
     {
-        //get no sales
-        $salesAgent = SalesAgent::find(1);
-        $noAgentSales = $salesAgent->sales;
-        //get total agent sales
-        $totalAgentSales = $salesAgent->totalSales();
+        $salesAgents = Cache::remember('salesAgents', 60 * 12, function () {
+            return SalesAgent::all();
+        });
 
         return view('statistics::index', [
-            'salesAgent' => $salesAgent,
-            'noAgentSales' => $noAgentSales->count(),
-            'totalAgentSales' => $totalAgentSales,
+            'salesAgents' => $salesAgents
         ]);
     }
 
