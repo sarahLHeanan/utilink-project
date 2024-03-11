@@ -15,8 +15,17 @@ class SalesAgent extends Model
      */
     protected $fillable = [];
     
-    protected static function newFactory(): SalesAgentFactory
+    // @todo calculate sales with this sales agent id and count
+    public function noSales()
     {
-        //return SalesAgentFactory::new();
+        
     }
+
+    // @todo get all sales and sum total
+    public function totalSales()
+    {
+
+    }
+
+
 }

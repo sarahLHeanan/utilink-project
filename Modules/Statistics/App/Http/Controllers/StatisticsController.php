@@ -3,6 +3,8 @@
 namespace Modules\Statistics\App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\SalesAgent;
+use App\Models\Sales;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -14,7 +16,15 @@ class StatisticsController extends Controller
      */
     public function index()
     {
-        return view('statistics::index');
+        //get no sales
+        //get total sales
+        $noAgentSales = 0;
+        $totalAgentSales = 0;
+
+        return view('statistics::index', [
+            'noAgentSales' => $noAgentSales,
+            'totalAgentSales' => $totalAgentSales,
+        ]);
     }
 
     /**
